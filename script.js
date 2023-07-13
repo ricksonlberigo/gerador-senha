@@ -60,7 +60,6 @@ function calculateQuality() {
     securityIndicatorBarEl.classList.remove('critical')
     securityIndicatorBarEl.classList.remove('warning')
     securityIndicatorBarEl.classList.add('safe')
-    securityIndicatorBarEl.classList.add('completed')
   } else if (percent > 50) {
     securityIndicatorBarEl.classList.remove('critical')
     securityIndicatorBarEl.classList.remove('safe')
@@ -69,6 +68,12 @@ function calculateQuality() {
     securityIndicatorBarEl.classList.remove('safe')
     securityIndicatorBarEl.classList.remove('warning')
     securityIndicatorBarEl.classList.add('critical')
+  }
+
+  if (percent >= 100) {
+    securityIndicatorBarEl.classList.add('completed')
+  } else {
+    securityIndicatorBarEl.classList.remove('completed')
   }
 }
 
