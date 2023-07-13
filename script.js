@@ -118,5 +118,8 @@ symbolCaseCheckEl.addEventListener('click', generatePassword)
 
 document.getElementById('copy').addEventListener('click', copy)
 document.getElementById('copy-icon').addEventListener('click', copy)
+document
+  .getElementById('refresh-icon')
+  .addEventListener('click', generatePassword)
 
 generatePassword()
