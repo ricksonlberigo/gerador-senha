@@ -55,6 +55,21 @@ function calculateQuality() {
   )
 
   securityIndicatorBarEl.style.width = `${percent}%`
+
+  if (percent > 69) {
+    securityIndicatorBarEl.classList.remove('critical')
+    securityIndicatorBarEl.classList.remove('warning')
+    securityIndicatorBarEl.classList.add('safe')
+    securityIndicatorBarEl.classList.add('completed')
+  } else if (percent > 50) {
+    securityIndicatorBarEl.classList.remove('critical')
+    securityIndicatorBarEl.classList.remove('safe')
+    securityIndicatorBarEl.classList.add('warning')
+  } else {
+    securityIndicatorBarEl.classList.remove('safe')
+    securityIndicatorBarEl.classList.remove('warning')
+    securityIndicatorBarEl.classList.add('critical')
+  }
 }
 
 function copy() {
