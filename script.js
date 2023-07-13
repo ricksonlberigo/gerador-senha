@@ -4,10 +4,28 @@ let passwordLength = 16
 // Seleciono o input onde ira ficar a nossa senha gerada
 const inputEl = document.getElementById('password')
 
+// Selecionando os checkbox para adicionarmos os eventos
+const upperCaseCheckEl = document.getElementById('uppercase-check')
+const numberCaseCheckEl = document.getElementById('number-check')
+const symbolCaseCheckEl = document.getElementById('symbol-check')
+
 function generatePassword() {
   // Criando conjunto de caracteres que serão utilizados na criação da senha
-  const chars =
-    'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789?!@#$%&*()[]{}'
+  let chars = 'abcdefghijklmnopqrstuvwxyz'
+  const upperCaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  const numberCaseChars = '123456789'
+  const symbolCaseChars = '!@#$%&*(){}[]'
+
+  // Verificando se os checkbox estão selecionados
+  if (upperCaseCheckEl.checked) {
+    chars += upperCaseChars
+  }
+  if (numberCaseCheckEl.checked) {
+    chars += numberCaseChars
+  }
+  if (symbolCaseCheckEl.checked) {
+    chars += symbolCaseChars
+  }
 
   // Variável onde irá ficar armazenado o valor da senha
   let password = ''
@@ -34,6 +52,11 @@ passwordLengthEl.addEventListener('input', () => {
   passwordLength = passwordLengthEl.value
   generatePassword()
 })
+
+// Adicionando evento que toda vez que tiver marcado o checked ou não regera a senha
+upperCaseCheckEl.addEventListener('click', generatePassword)
+numberCaseCheckEl.addEventListener('click', generatePassword)
+symbolCaseCheckEl.addEventListener('click', generatePassword)
 
 document.getElementById('copy').addEventListener('click', copy)
 document.getElementById('copy-icon').addEventListener('click', copy)
