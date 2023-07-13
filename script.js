@@ -14,7 +14,10 @@ function generatePassword() {
     password += chars.substring(randomNumber, randomNumber + 1)
   }
 
-  console.log(password)
+  // Seleciono o input onde ira ficar a nossa senha gerada
+  const inputEl = document.getElementById('password')
+  // Atribuo a senha gerada ao atributo de value do input no HTML
+  inputEl.value = password
 }
 
 generatePassword()
