@@ -9,6 +9,8 @@ const upperCaseCheckEl = document.getElementById('uppercase-check')
 const numberCaseCheckEl = document.getElementById('number-check')
 const symbolCaseCheckEl = document.getElementById('symbol-check')
 
+const securityIndicatorBarEl = document.getElementById('security-indicator-bar')
+
 function generatePassword() {
   // Criando conjunto de caracteres que serão utilizados na criação da senha
   let chars = 'abcdefghijklmnopqrstuvwxyz'
@@ -40,6 +42,14 @@ function generatePassword() {
 
   // Atribuo a senha gerada ao atributo de value do input no HTML
   inputEl.value = password
+
+  calculateQuality()
+}
+
+function calculateQuality() {
+  const percent = Math.round((passwordLength / 64) * 100)
+
+  securityIndicatorBarEl.style.width = `${percent}%`
 }
 
 function copy() {
