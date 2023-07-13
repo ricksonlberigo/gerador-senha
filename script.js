@@ -35,7 +35,7 @@ passwordLengthEl.addEventListener('input', () => {
   generatePassword()
 })
 
-const copyButtonEl = document.getElementById('copy')
-copyButtonEl.addEventListener('click', copy)
+document.getElementById('copy').addEventListener('click', copy)
+document.getElementById('copy-icon').addEventListener('click', copy)
 
 generatePassword()
