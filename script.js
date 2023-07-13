@@ -47,7 +47,12 @@ function generatePassword() {
 }
 
 function calculateQuality() {
-  const percent = Math.round((passwordLength / 64) * 100)
+  const percent = Math.round(
+    (passwordLength / 64) * 25 +
+      (upperCaseCheckEl.checked ? 15 : 0) +
+      (numberCaseCheckEl.checked ? 25 : 0) +
+      (symbolCaseCheckEl.checked ? 35 : 0),
+  )
 
   securityIndicatorBarEl.style.width = `${percent}%`
 }
