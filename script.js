@@ -1,6 +1,9 @@
 // Input de range sempre irá iniciar com um tamanho de 16
 let passwordLength = 16
 
+// Seleciono o input onde ira ficar a nossa senha gerada
+const inputEl = document.getElementById('password')
+
 function generatePassword() {
   // Criando conjunto de caracteres que serão utilizados na criação da senha
   const chars =
@@ -17,10 +20,12 @@ function generatePassword() {
     password += chars.substring(randomNumber, randomNumber + 1)
   }
 
-  // Seleciono o input onde ira ficar a nossa senha gerada
-  const inputEl = document.getElementById('password')
   // Atribuo a senha gerada ao atributo de value do input no HTML
   inputEl.value = password
+}
+
+function copy() {
+  navigator.clipboard.writeText(inputEl.value)
 }
 
 // Recuperando o input de range e adicionando um evento onde toda vez que for arrastado o range, o tamanho do password irá aumentar de acordo com o valor do input range e é criado uma nova senha ao fazer isso
@@ -29,5 +34,8 @@ passwordLengthEl.addEventListener('input', () => {
   passwordLength = passwordLengthEl.value
   generatePassword()
 })
+
+const copyButtonEl = document.getElementById('copy')
+copyButtonEl.addEventListener('click', copy)
 
 generatePassword()
